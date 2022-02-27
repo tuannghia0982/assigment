@@ -1,0 +1,32 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #EBEBEB;
+}
+.heading-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 80em;
+    margin: auto;
+    padding: 1em 0;
+}
+menu{
+    margin-top: 1em;
+    background-color: #2C7ABE;
+    text-transform: capitalize;
+}
+header, footer{
+    background-color: white;
+}
+.footer-container{
+    max-width: 80em;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0;
+}
