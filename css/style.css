@@ -1,0 +1,300 @@
+*{
+    
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #EBEBEB;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+header{
+    top:0;
+    /* margin-right: auto ;
+    margin-left: auto; */
+    position: fixed;
+    width: 100%;
+}
+.heading-bar{
+    display: flex;
+    height: 80px;
+}
+    .heading-bar > a{
+        left:0;
+        font-size: larger;
+        margin: auto 0;
+    }
+    .heading-bar > .search-box{
+        left: 0;
+        display: flex;
+        margin: auto 7%;
+        height: 40px;
+        width: 50%;
+    }
+    .heading-bar>.login{
+        margin: auto;
+        font-size: medium;
+    }
+
+menu{
+    padding-left: 0%;
+    background-color: dodgerblue;
+    margin-bottom: 0;
+}
+    .menu-ul{
+    display: flex;
+    height: 50px;
+    background-color: dodgerblue;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}   
+    .menu-ul-mb{
+        width: 50px;
+        height: 50px;
+        color: #fff;
+        list-style: none;
+        font-size: 30px;
+        margin: 0;
+        right: 0;
+        display: none;
+        padding:0;
+    }
+        .menu-li-mb{
+            width: 50px;
+            height: 50px;
+        }
+        .menu-li-mb>i{
+            text-align: center;
+            justify-content: center;
+            margin: 10px;
+        }
+    @media (max-width:1023px) {
+        .menu-ul-mb{
+            display: block;
+        }
+        .menu-ul{
+            display: none;
+        }
+
+
+    }
+    .menu-li{
+        
+        font-size: large;
+        width: 20%;
+    }
+        .menu-li>a{
+            width: 100%;
+            height: 100%;
+            color: aliceblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu-li:hover{
+            background-color: #F18121;
+        }
+        .droplist{
+            display: none;
+            z-index: 10;
+            padding: 1em 0;
+        }
+            .droplist a{
+                display: block;
+                padding: 0.5em 1em;
+            }
+            .droplist a:hover{
+                color: #F18121;
+            }
+        
+        .droplist-normal{
+            background-color: white;
+            position: absolute;
+            width: 20%;
+        }
+        .dropdown:hover .droplist{
+            display: block;
+        }
+        
+   
+        .item{
+            background-color: white;
+        }
+        .moreinfo{
+            display: flex;
+            justify-content: center;
+            height: 50px;
+            margin-bottom: 30px;
+        }
+        .moreinfo >a{
+            display: block;
+            width: max-content;
+            margin: auto;
+            background-color: #F18121;
+            color: white;
+            padding: 1em 2em;
+            border-radius: 0.5em;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 -5px 10px -10px black;
+        }
+header, footer{
+    background-color: white;
+}
+    .top-list{
+        padding-top: 30px;
+        
+    }
+.row{
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+    .row>.item{
+        width: 230px;
+        height: 300px;
+        background-color: #F18121;
+        margin: 0.5% 0.5% 0.5% 0.5%;
+    }
+
+    footer{
+        height: 30px;
+        bottom: 0;
+    }
+        .footer-container{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: larger;
+            bottom: 0%;
+        }
+/* a{
+    text-decoration: none;
+    color: black;
+}
+li{
+    list-style: none;
+}
+header{
+    position: fixed;
+    width: 100%;
+}
+.heading-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 80em;
+    margin: auto;
+    padding: 1em 0;
+}
+    
+    .search-box{
+        width: 40%;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+        .search-box input{
+            width: 100%;
+            padding: 1em 0;
+            padding: 1em 1em;
+            font-size: 1em;
+        }
+        .search-icon{
+            width: 2em;
+            height: 2em;
+            cursor: pointer;
+            position: absolute;
+            right: 1em;
+        }
+    
+
+menu{
+    margin-top: 1em;
+    background-color: #2C7ABE;
+    text-transform: capitalize;
+}
+.menu-ul{
+    display: flex;
+    max-width: 80em;
+    margin: auto;
+}
+
+    .menu-li > a{
+        color: white;
+        padding: 1em 2em;
+        display: block;
+    }
+    .menu-li > a:hover{
+        background-color: #F18121;
+    }
+
+.droplist{
+    display: none;
+    z-index: 10;
+    padding: 1em 0;
+
+}
+    .droplist a{
+        display: block;
+        padding: 0.5em 1em;
+    }
+    .droplist a:hover{
+        color: #F18121;
+    }
+
+.droplist-normal{
+    background-color: white;
+    position: absolute;
+    width: 15em;
+} */
+
+/* hover pop-up */
+/* .dropdown:hover .droplist{
+    display: block;
+}
+.top-list{
+    color: rgb(236, 12, 12);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.row {
+	width: 100%;
+	display: flex;
+    height: 100%;
+}
+.row .item {
+    
+	width: 16.67%;
+	float: left;
+	padding: 8px;
+	text-align: center;
+}
+
+
+header, footer{
+    background-color: white;
+}
+
+
+.footer-container{
+    height: 1500px;
+    max-width: 100em;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 1em 0;
+    align-items: center;
+    font-size: larger;
+} */

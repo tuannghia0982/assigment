@@ -1,0 +1,39 @@
+:root{
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+
+}
+*{
+    box-sizing: inherit;
+}
+ html{
+     font-size: 80.5%;
+     line-height: 1.6rem;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     box-sizing: border-box;
+ }
+ .grid{
+     width: 1200px;
+     max-width: 100%;
+     margin: 0 auto;
+ }
+ .grid_full-width{
+     width: 100%;
+ }
+ .grid_row{
+     display: flex;
+     flex-wrap: wrap;
+     margin-left: -12px;
+     margin-right: -12px;
+ }
+ .grid_column-2{
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 16.667%;
+ }
+ .grid_column-12{
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 100%;
+ }

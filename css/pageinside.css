@@ -1,0 +1,122 @@
+*{
+    
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #EBEBEB;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: white;
+    top:0;
+    /* margin-right: auto ;
+    margin-left: auto; */
+    width: 100%;
+}
+.heading-bar{
+    display: flex;
+    height: 80px;
+}
+    .heading-bar > a{
+        left:0;
+        font-size: larger;
+        margin: auto 0;
+    }
+    .heading-bar > .search-box{
+        left: 0;
+        display: flex;
+        margin: auto 7%;
+        height: 40px;
+        width: 50%;
+    }
+    .heading-bar>.login{
+        margin: auto;
+        font-size: medium;
+    }
+
+menu{
+    padding-left: 0%;
+    background-color: dodgerblue;
+    margin-bottom: 0;
+}
+    .menu-ul{
+    display: flex;
+    height: 50px;
+    background-color: dodgerblue;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}   
+    .menu-li{
+        
+        font-size: large;
+        width: 20%;
+    }
+        .menu-li>a{
+            width: 100%;
+            height: 100%;
+            color: aliceblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu-li:hover{
+            background-color: #F18121;
+        }
+        .droplist{
+            display: none;
+            z-index: 10;
+            padding: 1em 0;
+        }
+            .droplist a{
+                display: block;
+                padding: 0.5em 1em;
+            }
+            .droplist a:hover{
+                color: #F18121;
+            }
+        
+        .droplist-normal{
+            background-color: white;
+            position: absolute;
+            width: 20%;
+        }
+        .dropdown:hover .droplist{
+            display: block;
+        }
+        .controller{
+            display: flex;
+            height: 50px;
+            justify-content: center; 
+        }
+        .icon{
+            margin: 5px 3px;
+            text-align: center;
+        }
+            .controller> select{
+                margin: 5px 0;
+                border-radius: 3px;
+                width: 35%;
+            }
+header, footer{
+    background-color: white;
+}
+footer{
+    margin-top: 30px;
+    height: 30px;
+    bottom: 0;
+}
+    .footer-container{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: larger;
+        bottom: 0%;
+    }
