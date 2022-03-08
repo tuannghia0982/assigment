@@ -1,9 +1,15 @@
-:root{
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 8, 2022, 2:38:04 PM
+    Author     : tuann
+*/
+/*:root{
     --white-color: #fff;
-    --black-color: #000;
-    --text-color: #333;
-
-}
+}*/
 *{
     box-sizing: inherit;
 }
@@ -46,3 +52,4 @@
     padding-right: 12px;
     width: 100%;
  }
+
