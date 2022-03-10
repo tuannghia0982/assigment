@@ -38,6 +38,26 @@ public class CategoryDBContext extends DBContext{
         }
         return categories;
     }
+    public Category getCategory(String caid)
+    {
+        Category c = new Category();
+        try {
+            
+            String sql ="select caid, caname \n" +
+                        "from Category\n"+
+                        "where caid = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, caid);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                c.setId(rs.getInt("caid"));
+                c.setName(rs.getString("caname"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return c;
+    }
     public static void main(String[] args){
         CategoryDBContext a = new CategoryDBContext();
         ArrayList<Category> list = a.getCategories();

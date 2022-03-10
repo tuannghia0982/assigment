@@ -5,16 +5,32 @@
         <servlet-class>Controller.test</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>NewController</servlet-name>
-        <servlet-class>Controller.NewController</servlet-class>
+        <servlet-name>homeController</servlet-name>
+        <servlet-class>Controller.homeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>category</servlet-name>
+        <servlet-class>Controller.categoryController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SerieController</servlet-name>
+        <servlet-class>Controller.SerieController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>test</servlet-name>
         <url-pattern>/test</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>NewController</servlet-name>
-        <url-pattern>/New</url-pattern>
+        <servlet-name>homeController</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>category</servlet-name>
+        <url-pattern>/category</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SerieController</servlet-name>
+        <url-pattern>/Serie</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

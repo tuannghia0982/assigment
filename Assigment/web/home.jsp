@@ -20,15 +20,14 @@
         <link rel="stylesheet" href="css/base.css">
         <script src="https://kit.fontawesome.com/98df298cac.js" crossorigin="anonymous"></script>
         <%
-            ArrayList<Serie> series= (ArrayList<Serie>)request.getAttribute("series");
-            
+            ArrayList<Serie> newseries= (ArrayList<Serie>)request.getAttribute("newseries");
         %>
     </head>
     <body>
     <header>
         <div class="grid">
             <div class="heading-bar">
-                <a href="#"><h1 style="color: blueviolet; font-size: 30px;">TruyenTranh<span style="color: #F18121;">88</span></h1></a>
+                <a href="home"><h1 style="color: blueviolet; font-size: 30px;">TruyenTranh<span style="color: #F18121;">88</span></h1></a>
                 <form action="#" class="search-box">
                     <input type="text" placeholder="Enter Searching..." style="width:100%" required>
                     <button type="submit" class="search-icon" style="background-color: #F18121; width: 35px;"><i class="fa fa-search"></i></button>
@@ -40,25 +39,23 @@
             <menu>
                 <div class="grid">
                     <ul class="menu-ul">
-                        <li class="menu-li"><a href="#">Trang chủ</a></li>
+                        <li class="menu-li"><a href="home">Trang chủ</a></li>
                             <li class="menu-li dropdown">
                                 <a href="#">Thể loại</a>
                                     <div class="droplist droplist-normal">
                                         <c:forEach items="${requestScope.categories}" var="c">
-                                            <a href="#">${c.name}</a>
+                                            <a href="category?caid=${c.id}">${c.name}</a>
                                         </c:forEach>
                                     </div>
 
                             </li>
                             <li class="menu-li dropdown">
                                 <a href="#">Quốc gia</a>
-                                <div class="droplist droplist-normal">
-                                    <a href="#">Lorem</a>
-                                    <a href="#">Lorem</a>
-                                    <a href="#">Lorem</a>
-                                    <a href="#">Lorem</a>
-                                    <a href="#">Lorem</a>
-                                </div>
+                                    <div class="droplist droplist-normal">
+                                        <c:forEach items="${requestScope.countries}" var="c">
+                                            <a href="#">${c.name}</a>
+                                        </c:forEach>
+                                    </div>
                             </li>
                             <li class="menu-li dropdown">
                                 <a href="#">Xem Nhiều Nhất</a>
@@ -75,19 +72,20 @@
     <div class="container">
         <div class="grid" >
             <h2 class="top-list" style="padding-top: 160px;">Truyện Mới Nhất</h2>
-            <div class="grid_row">
+            <a href="#"class="grid_row">
+                
                 <%for(int i=0; i<6; i++){%>
-                <%Serie s = series.get(i); %>
+                    <%Serie s = newseries.get(i); %>
                     <div class="grid_column-2 grid_column-6">
                         <div class="item">
-                            <img src="img/olongvien.jpg" style="width:100%">
+                            <img src="<%=s.getImage()%>" style="width:100%; height:250px">
                             <p style="text-align: center;"><%=s.getName()%></p>
                         </div>
                     </div>
                 <%}%>
-
                 
-            </div>
+                
+            </a>
             <div class="moreinfo">
                 <a href="">Xem Thêm</a>
             </div>

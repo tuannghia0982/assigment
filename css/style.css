@@ -168,6 +168,22 @@ header, footer{
         background-color: #F18121;
         margin: 0.5% 0.5% 0.5% 0.5%;
     }
+    .container>.grid>h1{
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    table{
+        font-size: large;
+        height: 200px;
+        width: 70%;
+    }
+    table>tbody{
+        width: 80%;
+    }
+    .description{
+        width: 80%;
+        font-size: larger;
+    }
 
     footer{
         height: 30px;

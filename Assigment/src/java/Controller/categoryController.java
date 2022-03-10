@@ -6,6 +6,7 @@
 package Controller;
 
 import dal.CategoryDBContext;
+import dal.CountryDBContext;
 import dal.SerieDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,13 +16,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Category;
+import model.Country;
 import model.Serie;
 
 /**
  *
  * @author tuann
  */
-public class NewController extends HttpServlet {
+public class categoryController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,14 +37,24 @@ public class NewController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         SerieDBContext dbSerie = new SerieDBContext();
-        ArrayList<Serie> series = dbSerie.getSeriesNew();
-        request.setAttribute("series", series);
-        
+        String caid = request.getParameter("caid");
+//        ArrayList<Serie> newseries = dbSerie.getSeriesNew();
+//        request.setAttribute("newseries", newseries);
         CategoryDBContext dbCategory = new CategoryDBContext();
         ArrayList<Category> categories = dbCategory.getCategories();
+        Category category = dbCategory.getCategory(caid);
+        request.setAttribute("category", category);
         request.setAttribute("categories", categories);
         
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        CountryDBContext dbCountry = new CountryDBContext();
+        ArrayList<Country> countries = dbCountry.getCountries();
+        request.setAttribute("countries", countries);
+        
+        
+        ArrayList<Serie> seriesbycaid = dbSerie.getSeriesByCaid(caid);
+        request.setAttribute("newseries", seriesbycaid);
+        request.getRequestDispatcher("topic.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

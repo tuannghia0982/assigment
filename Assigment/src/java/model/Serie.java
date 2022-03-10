@@ -17,6 +17,7 @@ public class Serie {
     private int coid;
     private String description;
     private int quantity;
+    private String author;
 
     public int getId() {
         return id;
@@ -74,10 +75,15 @@ public class Serie {
         this.caid = caid;
     }
 
-    @Override
-    public String toString() {
-        return "Serie{" + "id=" + id + ", name=" + name + ", image=" + image + ", caid=" + caid + ", coid=" + coid + ", description=" + description + ", quantity=" + quantity + '}';
+    public String getAuthor() {
+        return author;
     }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    
+    
     
     
           
