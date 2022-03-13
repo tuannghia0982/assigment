@@ -32,7 +32,24 @@
                     <input type="text" name="txt" placeholder="Enter Searching..." style="width:100%" required>
                     <button type="submit" class="search-icon" style="background-color: #F18121; width: 35px;"><i class="fa fa-search"></i></button>
                 </form>
-                <p class="login"><a href="#">Đăng Nhập</a>/<a href="">Đăng Ký</a></p>
+                <c:if test="${sessionScope.account!=null}">
+                    <div class="person dropdown">
+                        <div style="width: 100%; margin: 20px 0px;justify-content: center;">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="droplist droplist-normal" style="width: 15%; font-size: medium;">
+                            <p>${sessionScope.account.displayname}</p>
+                            <a href="#">Thông tin</a>
+                            <a href="#">Lịch sử</a>
+                            <a href="logout">Thoát   <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                        </div>  
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.account==null}">
+                    <p class="login"><a href="login">Đăng Nhập</a>/<a href="signup">Đăng Ký</a></p>
+                </c:if>
+                       
+<!--                <p class="login"><a href="login">Đăng Nhập</a>/<a href="signup">Đăng Ký</a></p>-->
             </div>
         </div>
             <menu>
@@ -84,7 +101,7 @@
                 <%}%>
             </div>
             <div class="moreinfo">
-                <a href="">Xem Thêm</a>
+                <a href="category">Xem Thêm</a>
             </div>
         </div>
     

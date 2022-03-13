@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +14,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-<title>Bootstrap Sign up Form Horizontal</title>
+<title>Đăng Nhập Truyện Tranh 88</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
 <style>
 	body {
 		color: #999;
@@ -28,7 +31,7 @@
 		box-shadow: none !important;
 	}
     .form-control:focus {
-		border-color: #5cd3b4;
+		border-color: dodgerblue;
 	}
     .form-control, .btn {        
         border-radius: 3px;
@@ -43,7 +46,7 @@
         margin: 0 0 30px 0;
 		display: inline-block;
 		padding: 0 30px 10px 0;
-		border-bottom: 3px solid #5cd3b4;
+		border-bottom: 3px solid dodgerblue;
     }
     .signup-form form {
 		color: #999;
@@ -66,58 +69,71 @@
     .signup-form .btn {        
         font-size: 16px;
         font-weight: bold;
-		background: #5cd3b4;
+		background: dodgerblue;
 		border: none;
 		margin-top: 20px;
 		min-width: 140px;
     }
 	.signup-form .btn:hover, .signup-form .btn:focus {
-		background: #41cba9;
+		background: #F18121;
         outline: none !important;
 	}
     .signup-form a {
-		color: #5cd3b4;
+		color: dodgerblue;
 		text-decoration: underline;
 	}
 	.signup-form a:hover {
 		text-decoration: none;
 	}
     .signup-form form a {
-		color: #5cd3b4;
+		color: dodgerblue;
 		text-decoration: none;
 	}	
 	.signup-form form a:hover {
 		text-decoration: underline;
 	}
+        .warning{
+            color: red;
+            text-align: center;
+        }
+        .confirm{
+            color: green;
+            text-align: center;
+        }
 </style>
 </head>
 <body>
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
+    <form action="login" method="POST" class="form-horizontal">
 		<div class="col-xs-8 col-xs-offset-4">
 			<h2>Login</h2>
 		</div>		
         <div class="form-group">
-			<label class="control-label col-xs-4">Username</label>
-			<div class="col-xs-8">
+            <label class="control-label col-xs-4">Username</label>
+            <div class="col-xs-8">
                 <input type="text" class="form-control" name="username" required="required">
             </div>        	
         </div>
 		
-		<div class="form-group">
-			<label class="control-label col-xs-4">Password</label>
-			<div class="col-xs-8">
+	<div class="form-group">
+            <label class="control-label col-xs-4">Password</label>
+            <div class="col-xs-8">
                 <input type="password" class="form-control" name="password" required="required">
             </div>        	
         </div>
+        <div class="warning">
+            ${mess}
+        </div>
+        <div class="confirm">
+            ${confirm}
+        </div>    
 		
 		<div class="form-group">
 			<div class="col-xs-8 col-xs-offset-4">
-				<p><label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>.</label></p>
 				<button type="submit" class="btn btn-primary btn-lg">Login Now</button>
 			</div>  
 		</div>		      
     </form>
-	<div class="text-center"><a href="#">Create Account</a></div>
+	<div class="text-center"><a href="signup">Create Account</a></div>
 </div>
 </body>

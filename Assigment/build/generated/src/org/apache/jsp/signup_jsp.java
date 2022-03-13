@@ -132,7 +132,7 @@ public final class signup_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</head>\n");
       out.write("<body>\n");
       out.write("<div class=\"signup-form\">\n");
-      out.write("    <form action=\"/examples/actions/confirmation.php\" method=\"post\" class=\"form-horizontal\">\n");
+      out.write("    <form action=\"signup\" method=\"post\" class=\"form-horizontal\">\n");
       out.write("\t\t<div class=\"col-xs-8 col-xs-offset-4\">\n");
       out.write("\t\t\t<h2>Sign Up</h2>\n");
       out.write("\t\t</div>\t\t\n");
@@ -142,12 +142,7 @@ public final class signup_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <input type=\"text\" class=\"form-control\" name=\"username\" required=\"required\">\n");
       out.write("            </div>        \t\n");
       out.write("        </div>\n");
-      out.write("\t\t<div class=\"form-group\">\n");
-      out.write("\t\t\t<label class=\"control-label col-xs-4\">Email Address</label>\n");
-      out.write("\t\t\t<div class=\"col-xs-8\">\n");
-      out.write("                <input type=\"email\" class=\"form-control\" name=\"email\" required=\"required\">\n");
-      out.write("            </div>        \t\n");
-      out.write("        </div>\n");
+      out.write("\t\t\n");
       out.write("\t\t<div class=\"form-group\">\n");
       out.write("\t\t\t<label class=\"control-label col-xs-4\">Password</label>\n");
       out.write("\t\t\t<div class=\"col-xs-8\">\n");
@@ -162,7 +157,7 @@ public final class signup_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("\t\t<div class=\"form-group\">\n");
       out.write("\t\t\t<div class=\"col-xs-8 col-xs-offset-4\">\n");
-      out.write("\t\t\t\t<p><label class=\"checkbox-inline\"><input type=\"checkbox\" required=\"required\"> I accept the <a href=\"#\">Terms of Use</a> &amp; <a href=\"#\">Privacy Policy</a>.</label></p>\n");
+      out.write("\t\t\t\t\n");
       out.write("\t\t\t\t<button type=\"submit\" class=\"btn btn-primary btn-lg\">Sign Up</button>\n");
       out.write("\t\t\t</div>  \n");
       out.write("\t\t</div>\t\t      \n");

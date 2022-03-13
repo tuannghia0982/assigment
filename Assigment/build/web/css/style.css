@@ -38,6 +38,7 @@ header{
         left:0;
         font-size: larger;
         margin: auto 0;
+        width: 20%;
     }
     .heading-bar > .search-box{
         left: 0;
@@ -49,6 +50,16 @@ header{
     .heading-bar>.login{
         margin: auto;
         font-size: medium;
+    }
+    .person{
+        text-align: center;
+        justify-content: center;
+        width: 15%;
+        font-size: 40px;
+        color:dodgerblue;
+    }
+    .person:hover{
+        color:#F18121;
     }
 
 menu{

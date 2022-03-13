@@ -132,7 +132,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</head>\n");
       out.write("<body>\n");
       out.write("<div class=\"signup-form\">\n");
-      out.write("    <form action=\"/examples/actions/confirmation.php\" method=\"post\" class=\"form-horizontal\">\n");
+      out.write("    <form action=\"login\" method=\"post\" class=\"form-horizontal\">\n");
       out.write("\t\t<div class=\"col-xs-8 col-xs-offset-4\">\n");
       out.write("\t\t\t<h2>Login</h2>\n");
       out.write("\t\t</div>\t\t\n");
@@ -152,7 +152,6 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\n");
       out.write("\t\t<div class=\"form-group\">\n");
       out.write("\t\t\t<div class=\"col-xs-8 col-xs-offset-4\">\n");
-      out.write("\t\t\t\t<p><label class=\"checkbox-inline\"><input type=\"checkbox\" required=\"required\"> I accept the <a href=\"#\">Terms of Use</a> &amp; <a href=\"#\">Privacy Policy</a>.</label></p>\n");
       out.write("\t\t\t\t<button type=\"submit\" class=\"btn btn-primary btn-lg\">Login Now</button>\n");
       out.write("\t\t\t</div>  \n");
       out.write("\t\t</div>\t\t      \n");

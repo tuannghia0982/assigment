@@ -28,7 +28,7 @@
 		box-shadow: none !important;
 	}
     .form-control:focus {
-		border-color: #5cd3b4;
+		border-color: dodgerblue;
 	}
     .form-control, .btn {        
         border-radius: 3px;
@@ -43,7 +43,7 @@
         margin: 0 0 30px 0;
 		display: inline-block;
 		padding: 0 30px 10px 0;
-		border-bottom: 3px solid #5cd3b4;
+		border-bottom: 3px solid dodgerblue;
     }
     .signup-form form {
 		color: #999;
@@ -66,68 +66,74 @@
     .signup-form .btn {        
         font-size: 16px;
         font-weight: bold;
-		background: #5cd3b4;
+		background: dodgerblue;
 		border: none;
 		margin-top: 20px;
 		min-width: 140px;
     }
 	.signup-form .btn:hover, .signup-form .btn:focus {
-		background: #41cba9;
+		background: #F18121;
         outline: none !important;
 	}
     .signup-form a {
-		color: #5cd3b4;
+		color: dodgerblue;
 		text-decoration: underline;
 	}
 	.signup-form a:hover {
 		text-decoration: none;
 	}
     .signup-form form a {
-		color: #5cd3b4;
+		color: dodgerblue;
 		text-decoration: none;
 	}	
 	.signup-form form a:hover {
 		text-decoration: underline;
 	}
+        .warning{
+            color: red;
+            text-align: center;
+        }
 </style>
 </head>
 <body>
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
+    <form action="signup" method="post" class="form-horizontal">
 		<div class="col-xs-8 col-xs-offset-4">
 			<h2>Sign Up</h2>
 		</div>		
         <div class="form-group">
-			<label class="control-label col-xs-4">Username</label>
-			<div class="col-xs-8">
+            <label class="control-label col-xs-4">Username</label>
+            <div class="col-xs-8">
                 <input type="text" class="form-control" name="username" required="required">
             </div>        	
         </div>
-		<div class="form-group">
-			<label class="control-label col-xs-4">Email Address</label>
-			<div class="col-xs-8">
-                <input type="email" class="form-control" name="email" required="required">
+	<div class="form-group">
+            <label class="control-label col-xs-4">Displayname</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" name="displayname" required="required">
             </div>        	
-        </div>
-		<div class="form-group">
-			<label class="control-label col-xs-4">Password</label>
-			<div class="col-xs-8">
+        </div>	
+	<div class="form-group">
+            <label class="control-label col-xs-4">Password</label>
+            <div class="col-xs-8">
                 <input type="password" class="form-control" name="password" required="required">
             </div>        	
         </div>
-		<div class="form-group">
-			<label class="control-label col-xs-4">Confirm Password</label>
-			<div class="col-xs-8">
+	<div class="form-group">
+            <label class="control-label col-xs-4">Confirm Password</label>
+            <div class="col-xs-8">
                 <input type="password" class="form-control" name="confirm_password" required="required">
             </div>        	
         </div>
-		<div class="form-group">
-			<div class="col-xs-8 col-xs-offset-4">
-				<p><label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>.</label></p>
-				<button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
-			</div>  
-		</div>		      
+        <div class="warning">
+            ${mess}
+        </div>
+	<div class="form-group">
+            <div class="col-xs-8 col-xs-offset-4">
+		<button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+            </div>  
+	</div>		      
     </form>
-	<div class="text-center">Already have an account? <a href="#">Login here</a></div>
+	<div class="text-center">Already have an account? <a href="login">Login here</a></div>
 </div>
 </body>
