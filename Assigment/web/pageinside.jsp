@@ -21,10 +21,9 @@
             <div class="grid">
                 <div class="heading-bar">
                     <a href="#"><h1 style="color: blueviolet; font-size: 30px;">TruyenTranh<span style="color: #F18121;">88</span></h1></a>
-                    <form action="#" class="search-box">
-                        <input type="text" placeholder="Enter Searching..." style="width:100%" required>
+                    <form action="search" method="POST" class="search-box">
+                        <input type="text" name="txt" placeholder="Enter Searching..." style="width:100%" required>
                         <button type="submit" class="search-icon" style="background-color: #F18121; width: 35px;"><i class="fa fa-search"></i></button>
-
                     </form>
                     <p class="login"><a href="#">Đăng Nhập</a>/<a href="">Đăng Ký</a></p>
                 </div>

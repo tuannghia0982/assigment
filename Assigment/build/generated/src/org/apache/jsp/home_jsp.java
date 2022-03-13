@@ -127,7 +127,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <div class=\"container\">\n");
       out.write("        <div class=\"grid\" >\n");
       out.write("            <h2 class=\"top-list\" style=\"padding-top: 160px;\">Truyện Mới Nhất</h2>\n");
-      out.write("            <a href=\"#\"class=\"grid_row\">\n");
+      out.write("            <div class=\"grid_row\">\n");
       out.write("                \n");
       out.write("                ");
 for(int i=0; i<6; i++){
@@ -135,7 +135,9 @@ for(int i=0; i<6; i++){
       out.write("                    ");
 Serie s = newseries.get(i); 
       out.write("\n");
-      out.write("                    <div class=\"grid_column-2 grid_column-6\">\n");
+      out.write("                    <a href=\"serie?sid=");
+      out.print(s.getId());
+      out.write("\" class=\"grid_column-2 grid_column-6\">\n");
       out.write("                        <div class=\"item\">\n");
       out.write("                            <img src=\"");
       out.print(s.getImage());
@@ -144,13 +146,11 @@ Serie s = newseries.get(i);
       out.print(s.getName());
       out.write("</p>\n");
       out.write("                        </div>\n");
-      out.write("                    </div>\n");
+      out.write("                    </a>\n");
       out.write("                ");
 }
       out.write("\n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("            </a>\n");
+      out.write("            </div>\n");
       out.write("            <div class=\"moreinfo\">\n");
       out.write("                <a href=\"\">Xem Thêm</a>\n");
       out.write("            </div>\n");

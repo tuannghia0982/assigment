@@ -13,8 +13,8 @@ public class Serie {
     private int id;
     private String name;
     private String image;
-    private int caid;
-    private int coid;
+    private Category category;
+    private Country country;
     private String description;
     private int quantity;
     private String author;
@@ -43,14 +43,6 @@ public class Serie {
         this.image = image;
     }
 
-    public int getCoid() {
-        return coid;
-    }
-
-    public void setCoid(int coid) {
-        this.coid = coid;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -67,12 +59,20 @@ public class Serie {
         this.quantity = quantity;
     }
 
-    public int getCaid() {
-        return caid;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCaid(int caid) {
-        this.caid = caid;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public String getAuthor() {
@@ -81,6 +81,11 @@ public class Serie {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    @Override
+    public String toString() {
+        return "Serie{" + "id=" + id + ", name=" + name + ", image=" + image + ", category=" + category + ", country=" + country + ", description=" + description + ", quantity=" + quantity + ", author=" + author + '}';
     }
     
     

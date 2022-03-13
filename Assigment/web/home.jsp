@@ -28,10 +28,9 @@
         <div class="grid">
             <div class="heading-bar">
                 <a href="home"><h1 style="color: blueviolet; font-size: 30px;">TruyenTranh<span style="color: #F18121;">88</span></h1></a>
-                <form action="#" class="search-box">
-                    <input type="text" placeholder="Enter Searching..." style="width:100%" required>
+                <form action="search" method="POST" class="search-box">
+                    <input type="text" name="txt" placeholder="Enter Searching..." style="width:100%" required>
                     <button type="submit" class="search-icon" style="background-color: #F18121; width: 35px;"><i class="fa fa-search"></i></button>
-
                 </form>
                 <p class="login"><a href="#">Đăng Nhập</a>/<a href="">Đăng Ký</a></p>
             </div>
@@ -53,7 +52,7 @@
                                 <a href="#">Quốc gia</a>
                                     <div class="droplist droplist-normal">
                                         <c:forEach items="${requestScope.countries}" var="c">
-                                            <a href="#">${c.name}</a>
+                                            <a href="category?coid=${c.id}">${c.name}</a>
                                         </c:forEach>
                                     </div>
                             </li>
@@ -72,20 +71,18 @@
     <div class="container">
         <div class="grid" >
             <h2 class="top-list" style="padding-top: 160px;">Truyện Mới Nhất</h2>
-            <a href="#"class="grid_row">
+            <div class="grid_row">
                 
                 <%for(int i=0; i<6; i++){%>
                     <%Serie s = newseries.get(i); %>
-                    <div class="grid_column-2 grid_column-6">
+                    <a href="serie?sid=<%=s.getId()%>" class="grid_column-2 grid_column-6">
                         <div class="item">
                             <img src="<%=s.getImage()%>" style="width:100%; height:250px">
                             <p style="text-align: center;"><%=s.getName()%></p>
                         </div>
-                    </div>
+                    </a>
                 <%}%>
-                
-                
-            </a>
+            </div>
             <div class="moreinfo">
                 <a href="">Xem Thêm</a>
             </div>

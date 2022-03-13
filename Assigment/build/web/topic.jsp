@@ -20,17 +20,16 @@
         <link rel="stylesheet" href="css/base.css">
         <%
             ArrayList<Serie> newseries= (ArrayList<Serie>)request.getAttribute("newseries");    
-        %>  String a ="";
+        %>  
     </head>
     <body>
         <header>
             <div class="grid">
                 <div class="heading-bar">
                 <a href="home"><h1 style="color: blueviolet; font-size: 30px;">TruyenTranh<span style="color: #F18121;">88</span></h1></a>
-                <form action="#" class="search-box">
-                    <input type="text" placeholder="Enter Searching..." style="width:100%" required>
+                <form action="search" method="POST" class="search-box">
+                    <input type="text" name="txt" placeholder="Enter Searching..." style="width:100%" required>
                     <button type="submit" class="search-icon" style="background-color: #F18121; width: 35px;"><i class="fa fa-search"></i></button>
-
                 </form>
                 <p class="login"><a href="#">Đăng Nhập</a>/<a href="">Đăng Ký</a></p>
             </div>
@@ -52,7 +51,7 @@
                                 <a href="#">Quốc gia</a>
                                     <div class="droplist droplist-normal">
                                         <c:forEach items="${requestScope.countries}" var="c">
-                                            <a href="#">${c.name}</a>
+                                            <a href="category?caid=${-1}&coid=${c.id}">${c.name}</a>
                                         </c:forEach>
                                     </div>
                             </li>
@@ -72,22 +71,20 @@
         <div class="grid" >
             
             <h2 class="top-list" style="padding-top: 160px;">${requestScope.category.name}</h2>
-            <a href="#"class="grid_row">
+            <div class="grid_row">
                 <c:forEach items="${requestScope.newseries}" var="s">
-                    <div class="grid_column-2 grid_column-6">
+                    <a href="serie?sid=${s.id}" class="grid_column-2 grid_column-6">
                         <div class="item">
                             <img src="${s.image}" style="width:100%; height:250px">
                             <p style="text-align: center;">${s.name}</p>
                         </div>
-                    </div>
+                    </a>
                 </c:forEach>
                 
                 
                 
-            </a>
-            <div class="moreinfo">
-                <a href="">Xem Thêm</a>
             </div>
+            
         </div>
     </div>
     <footer>

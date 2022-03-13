@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Login
+    Created on : Mar 13, 2022, 2:47:16 AM
+    Author     : tuann
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

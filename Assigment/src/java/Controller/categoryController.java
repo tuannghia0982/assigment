@@ -37,22 +37,29 @@ public class categoryController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         SerieDBContext dbSerie = new SerieDBContext();
-        String caid = request.getParameter("caid");
+        String raw_caid = request.getParameter("caid");
+        String raw_coid = request.getParameter("coid");
+        if(raw_caid==null|| raw_caid.length()==0){
+            raw_caid="-1";
+        }
+        if(raw_coid==null|| raw_coid.length()==0){
+            raw_coid="-1";
+        }
 //        ArrayList<Serie> newseries = dbSerie.getSeriesNew();
 //        request.setAttribute("newseries", newseries);
         CategoryDBContext dbCategory = new CategoryDBContext();
         ArrayList<Category> categories = dbCategory.getCategories();
-        Category category = dbCategory.getCategory(caid);
-        request.setAttribute("category", category);
+//        Category category = dbCategory.getCategory(caid);
+//        request.setAttribute("category", category);
         request.setAttribute("categories", categories);
         
         CountryDBContext dbCountry = new CountryDBContext();
         ArrayList<Country> countries = dbCountry.getCountries();
         request.setAttribute("countries", countries);
-        
-        
-        ArrayList<Serie> seriesbycaid = dbSerie.getSeriesByCaid(caid);
-        request.setAttribute("newseries", seriesbycaid);
+        int caid = Integer.parseInt(raw_caid);
+        int coid = Integer.parseInt(raw_coid);
+        ArrayList<Serie> seriesby = dbSerie.getSeriesBy(caid, coid);
+        request.setAttribute("newseries", seriesby);
         request.getRequestDispatcher("topic.jsp").forward(request, response);
         
     }

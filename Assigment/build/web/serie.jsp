@@ -4,7 +4,11 @@
     Author     : tuann
 --%>
 
+<%@page import="model.Serie"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,10 +25,9 @@
             <div class="grid">
                 <div class="heading-bar">
                     <a href="home"><h1 style="color: blueviolet; font-size: 30px;">TruyenTranh<span style="color: #F18121;">88</span></h1></a>
-                    <form action="#" class="search-box">
-                        <input type="text" placeholder="Enter Searching..." style="width:100%" required>
+                    <form action="search" method="POST" class="search-box">
+                        <input type="text" name="txt" placeholder="Enter Searching..." style="width:100%" required>
                         <button type="submit" class="search-icon" style="background-color: #F18121; width: 35px;"><i class="fa fa-search"></i></button>
-
                     </form>
                     <p class="login"><a href="#">Đăng Nhập</a>/<a href="">Đăng Ký</a></p>
                 </div>
@@ -63,23 +66,24 @@
         </header>
         <div class="container">
             <div class="grid">
-                <h1 class="top-list" style="padding-top: 160px;">Tên Truyện</h1>
+                <h1 class="top-list" style="padding-top: 160px;">${requestScope.serie.name}</h1>
                 <div class="grid_row">
                     <div class="grid_column-3 grid_column-12s" style="margin: 0 auto;">
-                        <img src="img/olongvien.jpg" alt="" style="width: 100%; ">
+                        <img src="${requestScope.serie.image}" alt="" style="width: 100%; ">
                     </div>
                     <div class="grid_column-8 grid_column-12s">
                         <table>
                             <tbody>
-                                <tr><td>Tên Truyện</td><td>Ô long viện</td></tr>
-                                <tr><td>Tác giả</td><td>ntn vlog</td></tr>
-                                <tr><td>Thể Loại</td><td>hài</td></tr>
+                                <tr><td>Tên Truyện</td><td>${requestScope.serie.name}</td></tr>
+                                <tr><td>Tác giả</td><td>${requestScope.serie.author}</td></tr>
+                                <tr><td>Quốc Gia</td><td><a a href="category?coid=${requestScope.serie.country.id}">${requestScope.serie.country.name}</a></td></tr>
+                                <tr><td>Thể Loại</td><td><a href="category?caid=${requestScope.serie.category.id}">${requestScope.serie.category.name}</a></td></tr>
                                 <tr><td>Lượt xem</td><td>chưa biết</td></tr>
                             </tbody>
                         </table>
                         <div class="description">
                             <h2>Mô Tả</h2>
-                            <p>Một bộ truyệsdsfffahiafhufifuiefuefehosoidsoidsoidsiojsdfiofdhodsfohusfhuodfhusouhfduhosohsfohusfhuon hài kinh điển mà cả thế giới đều phải ngả nghiêng cười</p>
+                            <p>${requestScope.serie.description}</p>
                         </div>
                     </div>
                 </div>

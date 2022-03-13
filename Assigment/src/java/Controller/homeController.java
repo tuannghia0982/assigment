@@ -34,6 +34,7 @@ public class homeController extends HttpServlet {
         SerieDBContext dbSerie = new SerieDBContext();
         ArrayList<Serie> newseries = dbSerie.getSeriesNew();
         request.setAttribute("newseries", newseries);
+        request.setCharacterEncoding("UTF-8");
         
 //        String caid = request.getParameter("caid");
 //        ArrayList<Serie> seriesbycaid = dbSerie.getSeriesByCaid(caid);
