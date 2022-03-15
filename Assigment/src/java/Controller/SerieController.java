@@ -6,6 +6,7 @@
 package Controller;
 
 import dal.CategoryDBContext;
+import dal.ChapterDBContext;
 import dal.CountryDBContext;
 import dal.SerieDBContext;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Category;
+import model.Chapter;
 import model.Country;
 import model.Serie;
 
@@ -57,7 +59,9 @@ public class SerieController extends HttpServlet {
         ArrayList<Country> countries = dbCountry.getCountries();
         request.setAttribute("countries", countries);
         
-        
+        ChapterDBContext dbChapter = new ChapterDBContext();
+        ArrayList<Chapter> chapters = dbChapter.getChapters(sid);
+        request.setAttribute("chapters", chapters);
         
         request.getRequestDispatcher("serie.jsp").forward(request, response);
     }

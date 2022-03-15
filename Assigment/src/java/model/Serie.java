@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author tuann
@@ -18,7 +20,16 @@ public class Serie {
     private String description;
     private int quantity;
     private String author;
+    private ArrayList<Chapter> chapters;
 
+    public ArrayList<Chapter> getChapters() {
+        return chapters;
+    }
+
+    public void setChapters(ArrayList<Chapter> chapters) {
+        this.chapters = chapters;
+    }
+    
     public int getId() {
         return id;
     }
@@ -85,8 +96,10 @@ public class Serie {
 
     @Override
     public String toString() {
-        return "Serie{" + "id=" + id + ", name=" + name + ", image=" + image + ", category=" + category + ", country=" + country + ", description=" + description + ", quantity=" + quantity + ", author=" + author + '}';
+        return "Serie{" + "id=" + id + ", name=" + name + ", image=" + image + ", category=" + category + ", country=" + country + ", description=" + description + ", quantity=" + quantity + ", author=" + author + ", chapters=" + chapters + '}';
     }
+
+    
     
     
     

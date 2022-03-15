@@ -5,20 +5,26 @@
  */
 package Controller;
 
-import dal.AccountDBContext;
+import dal.CategoryDBContext;
+import dal.CountryDBContext;
+import dal.SerieDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Account;
+import model.Category;
+import model.Country;
+import model.Serie;
 
 /**
  *
  * @author tuann
  */
-public class SignupController extends HttpServlet {
+public class FavouriteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,8 +37,26 @@ public class SignupController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        Account a = (Account)request.getSession().getAttribute("account");
         
+        response.setContentType("text/html;charset=UTF-8");
+        SerieDBContext dbSerie = new SerieDBContext();
+        ArrayList<Serie> favseries = dbSerie.getSeriesFav(a.getId());
+        request.setAttribute("newseries", favseries);
+//        ArrayList<Serie> newseries = dbSerie.getSeriesNew();
+//        request.setAttribute("newseries", newseries);
+        CategoryDBContext dbCategory = new CategoryDBContext();
+        ArrayList<Category> categories = dbCategory.getCategories();
+//        Category category = dbCategory.getCategory(caid);
+//        request.setAttribute("category", category);
+        request.setAttribute("categories", categories);
+        
+        CountryDBContext dbCountry = new CountryDBContext();
+        ArrayList<Country> countries = dbCountry.getCountries();
+        request.setAttribute("countries", countries);
+        
+
+        request.getRequestDispatcher("topic.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -47,7 +71,7 @@ public class SignupController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("signup.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -61,37 +85,7 @@ public class SignupController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String displayname = request.getParameter("displayname");
-        String confirm_password = request.getParameter("confirm_password");
-        String confirm ="Đăng ký thành công, bây giờ hãy đăng nhập lại";
-        String wpass = "password nhập lại không đúng";
-        String wacount = "Tên đăng nhập không được để trống hoặc trùng với tên đã sử dụng";
-        if(!password.equals(confirm_password)){
-            request.setAttribute("mess", wpass);
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        }
-        
-        else{
-            AccountDBContext db = new AccountDBContext();
-            Account account = db.checkAccount(username);
-            if(account == null){
-                Account a = new Account();
-                a.setName(username);
-                a.setPassword(password);
-                a.setDisplayname(displayname);
-                db.addAccount(a);
-                request.setAttribute("confirm", confirm);
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-                
-            }
-            else{
-                request.setAttribute("mess", wacount);
-                request.getRequestDispatcher("signup.jsp").forward(request, response);
-            }
-        }
+        processRequest(request, response);
     }
 
     /**

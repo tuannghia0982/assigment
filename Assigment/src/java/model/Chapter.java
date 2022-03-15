@@ -9,11 +9,10 @@ package model;
  *
  * @author tuann
  */
-public class Account {
-    private String name;
-    private String password;
-    private String displayname;
+public class Chapter {
     private int id;
+    private String name;
+    private int sid;
 
     public int getId() {
         return id;
@@ -22,7 +21,7 @@ public class Account {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -31,26 +30,24 @@ public class Account {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public int getSid() {
+        return sid;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getDisplayname() {
-        return displayname;
-    }
-
-    public void setDisplayname(String displayname) {
-        this.displayname = displayname;
+    public void setSid(int sid) {
+        this.sid = sid;
     }
 
     @Override
     public String toString() {
-        return "Account{" + "name=" + name + ", password=" + password + ", displayname=" + displayname + ", id=" + id + '}';
+        return "Chapter{" + "id=" + id + ", name=" + name + ", sid=" + sid + '}';
     }
+    
+    
+
+    
+
+    
 
     
     
