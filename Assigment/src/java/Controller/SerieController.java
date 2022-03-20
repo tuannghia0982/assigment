@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Account;
 import model.Category;
 import model.Chapter;
 import model.Country;
@@ -39,12 +40,22 @@ public class SerieController extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+        Account a = (Account)request.getSession().getAttribute("account");
+//        int uid = a.getId();
+        
+        
         String sid = request.getParameter("sid");
+        int sidc = Integer.parseInt(sid);
         SerieDBContext dbSerie = new SerieDBContext();
         Serie serie = dbSerie.getSerie(sid);
         request.setAttribute("serie", serie);
-        
-        
+        if(a!=null){
+            int uid = a.getId();
+            Serie checkserie = dbSerie.checkFav(uid, sidc);
+            request.setAttribute("checkserie", checkserie);
+        }
+//        Serie checkserie = dbSerie.checkFav(uid, sidc);
+//        request.setAttribute("checkserie", checkserie);
         
 //        String caid = request.getParameter("caid");
 //        ArrayList<Serie> seriesbycaid = dbSerie.getSeriesByCaid(caid);

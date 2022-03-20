@@ -60,11 +60,17 @@
     </header>
     <div class="container">
         <div class="grid">
-            <h1 class="top-list" style="padding-top: 160px;">Tên Truyện</h1>
+            <h1 class="top-list" style="padding-top: 160px;">Tên Truyện<a href="" style="font-size: medium;">(chỉnh sửa)</a><a href="" style="font-size: medium;">(xóa)</a></h1>
+            
             <div class="grid_row">
                 <div class="grid_column-3 grid_column-12s" style="margin: 0 auto;">
                     <img src="img/olongvien.jpg" alt="" style="width: 100%; ">
+                    <div class="moreinfo">
+                        <a href="addfavourite?sid=${requestScope.serie.id}">Yêu Thích</a>
+                    </div>
+                    
                 </div>
+                
                 <div class="grid_column-8 grid_column-12s">
                     <table>
                         <tbody>
@@ -78,10 +84,40 @@
                         <h2>Mô Tả</h2>
                         <p>Một bộ truyệsdsfffahiafhufifuiefuefehosoidsoidsoidsiojsdfiofdhodsfohusfhuodfhusouhfduhosohsfohusfhuon hài kinh điển mà cả thế giới đều phải ngả nghiêng cười</p>
                     </div>
+                    
                 </div>
             </div>
             <div class="chapter"><h2>Danh Sách chương</h2></div>
+            <div class="listchap">
+                <ul>
+                    <li>
+                        <a href="">first</a>
+                        <div class="edit">
+                            <a href="#" style="background-color: rgb(0, 102, 255);">chỉnh sửa</a>
+                        </div>
+                        <div class="edit">
+                            <a href="#" style="background-color: red;">xóa</a>
+                        </div>
+                    <li>
+                        <a href="">first</a>
+                        <div class="edit">
+                            <a href="#" style="background-color: rgb(0, 102, 255);">chỉnh sửa</a>
+                        </div>
+                        <div class="edit">
+                            <a href="#" style="background-color: red;">xóa</a>
+                        </div>
+                    </li>
+                    <li><a href="">first</a></li>
+                </ul>
+            </div>
 
+        </div>
+        <label for="nav-mobile-input" class="overlays"></label>
+        <div class="grid">
+            <nav class="nav_add">
+                <div class="nav_mobile_close"><i class="fa-solid fa-xmark"></i></div>
+                
+            </nav>
         </div>
     </div>
 </body>

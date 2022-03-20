@@ -60,12 +60,11 @@ public final class pageinside_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div class=\"grid\">\n");
       out.write("                <div class=\"heading-bar\">\n");
       out.write("                    <a href=\"#\"><h1 style=\"color: blueviolet; font-size: 30px;\">TruyenTranh<span style=\"color: #F18121;\">88</span></h1></a>\n");
-      out.write("                    <form action=\"#\" class=\"search-box\">\n");
-      out.write("                        <input type=\"text\" placeholder=\"Enter Searching...\" style=\"width:100%\" required>\n");
+      out.write("                    <form action=\"search\" method=\"POST\" class=\"search-box\">\n");
+      out.write("                        <input type=\"text\" name=\"txt\" placeholder=\"Enter Searching...\" style=\"width:100%\" required>\n");
       out.write("                        <button type=\"submit\" class=\"search-icon\" style=\"background-color: #F18121; width: 35px;\"><i class=\"fa fa-search\"></i></button>\n");
-      out.write("\n");
       out.write("                    </form>\n");
-      out.write("                    <p class=\"login\"><a href=\"#\">Đăng Nhập</a>/<a href=\"\">Đăng Ký</a></p>\n");
+      out.write("                    <p class=\"login\"><a href=\"login\">Đăng Nhập</a>/<a href=\"signup\">Đăng Ký</a></p>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("                <menu>\n");

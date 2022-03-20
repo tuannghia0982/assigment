@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Account;
 import model.Category;
 import model.Chapter;
 import model.Country;
@@ -27,7 +28,7 @@ public class SerieDBContext extends DBContext{
         
         try {
             
-            String sql1 ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.quantity, s.author, co.coname, ca.caname\n" +
+            String sql1 ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.author, co.coname, ca.caname\n" +
 "                        from Serie s inner join Category ca\n" +
 "                        on s.caid = ca.caid\n" +
 "                        inner join Country co\n" +
@@ -54,7 +55,7 @@ public class SerieDBContext extends DBContext{
                 co.setName(rs1.getString("coname"));
                 s.setCountry(co);
                 s.setDescription(rs1.getString("description"));
-                s.setQuantity(rs1.getInt("quantity"));
+                
                 PreparedStatement stm2 = connection.prepareStatement(sql2);
                 stm2.setInt(1, sid);
                 ResultSet rs2 = stm2.executeQuery();
@@ -80,7 +81,7 @@ public class SerieDBContext extends DBContext{
         
         try {
             
-            String sql1 ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.quantity, s.author, co.coname, ca.caname \n" +
+            String sql1 ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.author, co.coname, ca.caname \n" +
                         "from Serie s inner join Category ca\n" +
                         "on s.caid = ca.caid\n" +
                         "inner join Country co\n" +
@@ -113,7 +114,6 @@ public class SerieDBContext extends DBContext{
                 co.setName(rs1.getString("coname"));
                 s.setCountry(co);
                 s.setDescription(rs1.getString("description"));
-                s.setQuantity(rs1.getInt("quantity"));
                 PreparedStatement stm2 = connection.prepareStatement(sql2);
                 stm2.setInt(1, sid);
                 ResultSet rs2 = stm2.executeQuery();
@@ -138,7 +138,7 @@ public class SerieDBContext extends DBContext{
         Serie s = new Serie();
         try {
             
-            String sql ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.quantity, s.author, co.coname, ca.caname\n" +
+            String sql ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.author, co.coname, ca.caname, s.quantity\n" +
 "                        from Serie s inner join Category ca\n" +
 "                        on s.caid = ca.caid\n" +
 "                        inner join Country co\n" +
@@ -160,8 +160,8 @@ public class SerieDBContext extends DBContext{
                 co.setName(rs.getString("coname"));
                 s.setCountry(co);
                 s.setDescription(rs.getString("description"));
-                s.setQuantity(rs.getInt("quantity"));
                 s.setAuthor(rs.getString("author"));
+                s.setQuantity(rs.getInt("quantity"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SerieDBContext.class.getName()).log(Level.SEVERE, null, ex);
@@ -173,7 +173,7 @@ public class SerieDBContext extends DBContext{
         ArrayList<Serie> series = new ArrayList<>();
         try {
             
-            String sql ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.quantity, s.author, co.coname, ca.caname\n" +
+            String sql ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.author, co.coname, ca.caname\n" +
 "                        from Serie s inner join Category ca\n" +
 "                        on s.caid = ca.caid\n" +
 "                        inner join Country co\n" +
@@ -217,7 +217,6 @@ public class SerieDBContext extends DBContext{
                 co.setName(rs.getString("coname"));
                 s.setCountry(co);
                 s.setDescription(rs.getString("description"));
-                s.setQuantity(rs.getInt("quantity"));
                 series.add(s);
             }
         } catch (SQLException ex) {
@@ -225,12 +224,46 @@ public class SerieDBContext extends DBContext{
         }
         return series;
     }
+    public void addSerie(Serie s)
+    {
+        String sql = "INSERT INTO [Serie]\n" +
+                    "           ([sname]\n" +
+                    "           ,[image]\n" +
+                    "           ,[caid]\n" +
+                    "           ,[coid]\n" +
+                    "           ,[description]\n" +
+                    "           ,[author]\n" +
+                    "           ,[quantity])\n" +
+                    "     VALUES\n" +
+                    "           (?\n" +
+                    "           ,?\n" +
+                    "           ,?\n" +
+                    "           ,?\n" +
+                    "           ,?\n" +
+                    "           ,?\n" +
+                    "           ,?)";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, s.getName());
+            stm.setString(2, s.getImage());
+            stm.setInt(3, s.getCategory().getId());
+            stm.setInt(4, s.getCountry().getId());
+            stm.setString(5, s.getDescription());
+            stm.setString(6, s.getAuthor());
+            stm.setInt(7, 0);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SerieDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     public ArrayList<Serie> getSeriesBySearch(String sname)
     {
         ArrayList<Serie> series = new ArrayList<>();
         try {
             
-            String sql ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.quantity, s.author, co.coname, ca.caname\n" +
+            String sql ="select s.sid, s.sname, s.image, s.caid, s.coid, s.description, s.author, co.coname, ca.caname\n" +
 "                        from Serie s inner join Category ca\n" +
 "                        on s.caid = ca.caid\n" +
 "                        inner join Country co\n" +
@@ -253,7 +286,6 @@ public class SerieDBContext extends DBContext{
                 co.setName(rs.getString("coname"));
                 s.setCountry(co);
                 s.setDescription(rs.getString("description"));
-                s.setQuantity(rs.getInt("quantity"));
                 series.add(s);
             }
         } catch (SQLException ex) {
@@ -261,11 +293,123 @@ public class SerieDBContext extends DBContext{
         }
         return series;
     }
+    
+    public void addFav(int uid, int sid)
+    {
+        String sql = "INSERT INTO [Favourite]\n" +
+                    "           ([Uid]\n" +
+                    "           ,[sid])\n" +
+                    "     VALUES\n" +
+                    "           (?\n" +
+                    "           ,?)";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, uid);
+            stm.setInt(2, sid);
+           
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SerieDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if(stm != null)
+            {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SerieDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            if(connection !=null)
+            {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SerieDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    public void delFav(int uid, int sid)
+    {
+        String sql = "DELETE FROM [Favourite]\n" +
+                     "WHERE Uid=? and sid=?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, uid);
+            stm.setInt(2, sid);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SerieDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if(stm != null)
+            {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SerieDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            if(connection !=null)
+            {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SerieDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    public Serie checkFav(int uid, int sid){
+        try {
+            String sql = "select s.sid from serie s\n" +
+                        "inner join favourite f \n" +
+                        "on f.sid= s.sid\n" +
+                        "where uid =? and s.sid=?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, uid);
+            stm.setInt(2, sid);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                Serie s = new Serie();
+                s.setId(rs.getInt("sid"));
+                return s;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public int getSid()
+    {
+        int sid;
+        try {
+            
+            String sql ="select top 1 sid from Serie\n" +
+                        "order by sid desc";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                sid = rs.getInt("sid");
+                return sid;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SerieDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+    
     public static void main(String[] args){
         SerieDBContext a = new SerieDBContext();
-        ArrayList<Serie> list = a.getSeriesFav(1);
-        for(Serie s : list){
-            System.out.println(s);
-        }
+        Serie b = a.getSerie("1");
+//        int s = a.getSid();
+        System.out.println(b);
     }
 }

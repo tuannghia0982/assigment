@@ -35,13 +35,13 @@
                 <c:if test="${sessionScope.account!=null}">
                     <div class="person dropdown">
                         <div style="width: 100%; margin: 20px 0px;justify-content: center;">
-                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-circle-user"></i>
                         </div>
                         <div class="droplist droplist-normal" style="width: 15%; font-size: medium;">
                             <p>${sessionScope.account.displayname}</p>
-                            <a href="#">Thông tin</a>
-                            <a href="#">Lịch sử</a>
-                            <a href="#">Thoát   <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                            <a href="info/updateinfo">Thông tin</a>
+                            <a href="favourite">Yêu thích</a>
+                            <a href="logout">Thoát   <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                         </div>  
                     </div>
                 </c:if>
@@ -91,7 +91,7 @@
                 <c:forEach items="${requestScope.newseries}" var="s">
                     <a href="serie?sid=${s.id}" class="grid_column-2 grid_column-6">
                         <div class="item">
-                            <img src="${s.image}" style="width:100%; height:250px">
+                            <img src="img/${s.image}" style="width:100%; height:250px">
                             <p style="text-align: center;">${s.name}</p>
                         </div>
                     </a>

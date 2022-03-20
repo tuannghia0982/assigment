@@ -36,6 +36,46 @@
         <servlet-name>LogotController</servlet-name>
         <servlet-class>Controller.LogotController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updateinfoController</servlet-name>
+        <servlet-class>profilecontroller.updateinfoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changepasswordController</servlet-name>
+        <servlet-class>profilecontroller.changepasswordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FavouriteController</servlet-name>
+        <servlet-class>Controller.FavouriteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddFavourite</servlet-name>
+        <servlet-class>Controller.AddFavourite</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DelFavController</servlet-name>
+        <servlet-class>Controller.DelFavController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>insertserie</servlet-name>
+        <servlet-class>profilecontroller.insertserie</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChapterController</servlet-name>
+        <servlet-class>Controller.ChapterController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddChapter</servlet-name>
+        <servlet-class>Controller.AddChapter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deletechapter</servlet-name>
+        <servlet-class>Controller.deletechapter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateChapter</servlet-name>
+        <servlet-class>Controller.UpdateChapter</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>test</servlet-name>
         <url-pattern>/test</url-pattern>
@@ -67,6 +107,46 @@
     <servlet-mapping>
         <servlet-name>LogotController</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateinfoController</servlet-name>
+        <url-pattern>/info/updateinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changepasswordController</servlet-name>
+        <url-pattern>/info/changepassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FavouriteController</servlet-name>
+        <url-pattern>/favourite</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddFavourite</servlet-name>
+        <url-pattern>/addfavourite</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DelFavController</servlet-name>
+        <url-pattern>/DelFav</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>insertserie</servlet-name>
+        <url-pattern>/info/insertserie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChapterController</servlet-name>
+        <url-pattern>/chapter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddChapter</servlet-name>
+        <url-pattern>/addchapter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deletechapter</servlet-name>
+        <url-pattern>/deletechapter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateChapter</servlet-name>
+        <url-pattern>/updatechapter</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

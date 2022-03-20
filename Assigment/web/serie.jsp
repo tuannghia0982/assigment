@@ -32,13 +32,13 @@
                     <c:if test="${sessionScope.account!=null}">
                         <div class="person dropdown">
                             <div style="width: 100%; margin: 20px 0px;justify-content: center;">
-                                <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-circle-user"></i>
                             </div>
                             <div class="droplist droplist-normal" style="width: 15%; font-size: medium;">
                                 <p>${sessionScope.account.displayname}</p>
-                                <a href="#">Thông tin</a>
-                                <a href="#">Lịch sử</a>
-                                <a href="#">Thoát   <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                                <a href="info/updateinfo">Thông tin</a>
+                                <a href="favourite">Yêu thích</a>
+                                <a href="logout">Thoát   <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                             </div>  
                         </div>
                     </c:if>
@@ -63,7 +63,7 @@
                                     <a href="#">Quốc gia</a>
                                         <div class="droplist droplist-normal">
                                             <c:forEach items="${requestScope.countries}" var="c">
-                                                <a href="#">${c.name}</a>
+                                                <a href="category?coid=${c.id}">${c.name}</a>
                                             </c:forEach>
                                         </div>
                                 </li>
@@ -81,10 +81,23 @@
         </header>
         <div class="container">
             <div class="grid">
-                <h1 class="top-list" style="padding-top: 160px;">${requestScope.serie.name}</h1>
+                <h1 class="top-list" style="padding-top: 160px;">${requestScope.serie.name}<a href="" style="font-size: medium;">(chỉnh sửa)</a><a href="" style="font-size: medium;">(xóa)</a></h1>
                 <div class="grid_row">
                     <div class="grid_column-3 grid_column-12s" style="margin: 0 auto;">
-                        <img src="${requestScope.serie.image}" alt="" style="width: 100%; ">
+                        <img src="img/${requestScope.serie.image}" alt="" style="width: 100%; ">
+                        <c:if test="${sessionScope.account!=null}">
+                            <c:if test="${requestScope.checkserie==null}">
+                                <div class="moreinfo">
+                                    <a href="addfavourite?sid=${requestScope.serie.id}">Yêu Thích</a>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.checkserie!=null}">
+                                <div class="moreinfo">
+                                    <a href="DelFav?sid=${requestScope.serie.id}" style="background-color: red">Bỏ thích</a>
+                                </div>
+                            </c:if>
+                        </c:if>
+                        
                     </div>
                     <div class="grid_column-8 grid_column-12s">
                         <table>
@@ -93,7 +106,7 @@
                                 <tr><td>Tác giả</td><td>${requestScope.serie.author}</td></tr>
                                 <tr><td>Quốc Gia</td><td><a a href="category?coid=${requestScope.serie.country.id}">${requestScope.serie.country.name}</a></td></tr>
                                 <tr><td>Thể Loại</td><td><a href="category?caid=${requestScope.serie.category.id}">${requestScope.serie.category.name}</a></td></tr>
-                                <tr><td>Lượt xem</td><td>chưa biết</td></tr>
+                                <tr><td>Lượt xem</td><td>${requestScope.serie.quantity}</td></tr>
                             </tbody>
                         </table>
                         <div class="description">
@@ -103,7 +116,22 @@
                     </div>
                 </div>
                 <div class="chapter"><h2>Danh Sách chương</h2></div>
-
+                <div class="listchap">
+                    <ul>
+                        <li><a href="addchapter?sid=${requestScope.serie.id}">Thêm Chapter <i class="fa-solid fa-circle-plus" style="margin-left: 5px; color: green"></i></a></li>
+                        <c:forEach items="${requestScope.chapters}" var="c">
+                            <li>
+                                <a href="chapter?chapid=${c.id}">${c.name}</a>
+                                <div class="edit">
+                                    <a href="updatechapter?chapid=${c.id}" style="background-color: rgb(0, 102, 255);">chỉnh sửa</a>
+                                </div>
+                                <div class="edit">
+                                    <a href="deletechapter?chapid=${c.id}" style="background-color: red;">xóa</a>
+                                </div>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
             </div>
         </div>
         <footer>

@@ -35,12 +35,12 @@
                 <c:if test="${sessionScope.account!=null}">
                     <div class="person dropdown">
                         <div style="width: 100%; margin: 20px 0px;justify-content: center;">
-                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-circle-user"></i>
                         </div>
                         <div class="droplist droplist-normal" style="width: 15%; font-size: medium;">
                             <p>${sessionScope.account.displayname}</p>
-                            <a href="#">Thông tin</a>
-                            <a href="#">Lịch sử</a>
+                            <a href="info/updateinfo">Thông tin</a>
+                            <a href="favourite">Yêu thích</a>
                             <a href="logout">Thoát   <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                         </div>  
                     </div>
@@ -94,8 +94,13 @@
                     <%Serie s = newseries.get(i); %>
                     <a href="serie?sid=<%=s.getId()%>" class="grid_column-2 grid_column-6">
                         <div class="item">
-                            <img src="<%=s.getImage()%>" style="width:100%; height:250px">
-                            <p style="text-align: center;"><%=s.getName()%></p>
+                            <img src="img/<%=s.getImage()%>" style="width:100%; height:250px">
+                            <p style=" font-size: 15px"><%=s.getName()%></p>
+                            <%if(s.getChapters()==null){%>
+                                <p style="text-align: center;">null</p>
+                            <%}else{%>
+                                <p><%=s.getChapters().get(0).getName()%></p>
+                            <%}%>
                         </div>
                     </a>
                 <%}%>

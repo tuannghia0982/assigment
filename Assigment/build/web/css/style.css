@@ -11,7 +11,7 @@ and open the template in the editor.
     
 }
 body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Quicksand,sans-serif;
     background-color: #EBEBEB;
     margin-left: auto;
     margin-right: auto;
@@ -148,9 +148,20 @@ menu{
         
    
         .item{
+            border:1px solid gray;
             background-color: white;
         }
+        .item>p{
+            display: -webkit-box;
+            -webkit-line-clamp: 1;  /* số dòng hiển thị */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-align: center;
+            margin: 0;
+            
+        }
         .moreinfo{
+            margin-top: 30px;
             display: flex;
             justify-content: center;
             height: 50px;
@@ -168,6 +179,73 @@ menu{
             font-size: 1.2em;
             box-shadow: 0 -5px 10px -10px black;
         }
+        .edit{
+            display: flex;
+            justify-content: center;
+            height: 47px;
+            margin-bottom: 30px;
+            margin-bottom: 0;
+            margin-right: 5px;
+            text-align: center;
+        }
+        .edit >a{
+            display: block;
+            width: max-content;
+            
+            color: white;
+            padding: 1em 2em;
+            border-radius: 0.5em;
+            font-weight: bold;
+            box-shadow: 0 -5px 10px -10px black;
+        }
+        .follow{
+            display: flex;
+            justify-content: center;
+            height: 50px;
+            margin-bottom: 30px;
+        }
+        .follow >a{
+            display: block;
+            width: max-content;
+            margin: auto;
+            background-color: #F18121;
+            color: white;
+            padding: 1em 2em;
+            border-radius: 0.5em;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 -5px 10px -10px black;
+        }
+        .listchap{
+            background-color: #fff;
+            border:3px solid gray;
+            width:100%;
+            height:300px;
+            padding:0px;
+            overflow:scroll;
+            
+        }
+        
+            .listchap>ul>li{
+                width: 100%;
+                padding: auto;
+                list-style: none;
+                font-size: medium;
+                height: 50px;
+                border-bottom:3px solid gray;
+                justify-content: center;
+                display: flex;
+                
+            }
+            .listchap>ul>li:hover{
+                background-color: #EBEBEB;
+            }
+            .listchap>ul>li>a{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+            }
         
 header, footer{
     background-color: white;
@@ -217,6 +295,15 @@ header, footer{
             font-size: larger;
             bottom: 0%;
         }
+    .overlays{
+        position: fixed;
+        top:0;
+        right:0; 
+        bottom:0;
+        left:0;
+        background-color: rgba(0, 0, 0, 0.3);
+/*        display: none;*/
+    }
 /* a{
     text-decoration: none;
     color: black;

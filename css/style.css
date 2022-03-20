@@ -88,7 +88,22 @@ menu{
             justify-content: center;
             margin: 10px;
         }
+    .overlay{
+        position: fixed;
+        top:0;
+        right:0; 
+        bottom:0;
+        left:0;
+        background-color: rgba(0, 0, 0, 0.3);
+        display: none;
+    }
     
+    .nav_input:checked ~ .overlay{
+        display: block;
+    }
+    .nav_input:checked ~ .nav_mobile{
+        transform: translateX(0%);
+    }
     @media (max-width:1023px) {
         .menu-ul-mb{
             display: block;
@@ -96,9 +111,41 @@ menu{
         .menu-ul{
             display: none;
         }
-        
+        .search-box>input{
+            display: none;
+        }
+        .search-box>button{
+            display: none;
+        }
+    }
+    .nav_mobile{
+        position: fixed;
+        top:0;
+        left:0;
+        bottom:0;
+        width:320px;
+        max-width: 100%;
+        background-color: #fff;
+        transform: translateX(-100%);
+    }
+    
 
-
+    .nav_list{
+        margin-top: 80px;
+    }
+    .nav_link{
+        text-decoration: none;
+        color: Black;
+        display: block;
+        padding: 8px 0;
+        font-size: medium;
+    }
+    .nav_mobile_close{
+        font-size: 30px;
+        color: black;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
     }
     .menu-li{
         
@@ -149,6 +196,25 @@ menu{
             height: 50px;
             margin-bottom: 30px;
         }
+        .edit{
+            display: flex;
+            justify-content: center;
+            height: 41px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+            margin-right: 5px;
+            text-align: center;
+        }
+        .edit >a{
+            display: block;
+            width: max-content;
+            
+            color: white;
+            padding: 1em 2em;
+            border-radius: 0.5em;
+            font-weight: bold;
+            box-shadow: 0 -5px 10px -10px black;
+        }
         .moreinfo >a{
             display: block;
             width: max-content;
@@ -161,6 +227,35 @@ menu{
             font-size: 1.2em;
             box-shadow: 0 -5px 10px -10px black;
         }
+        .listchap{
+            background-color: #fff;
+            border:3px solid gray;
+            width:100%;
+            height:300px;
+            padding:20px;
+            overflow:scroll;
+        }
+            .listchap>ul>li{
+                width: 100%;
+                padding: auto;
+                list-style: none;
+                font-size: medium;
+                height: 50px;
+                border-bottom:3px solid gray;
+                justify-content: center;
+                display: flex;
+                
+            }
+            .listchap>ul>li:hover{
+                background-color: #EBEBEB;
+            }
+            .listchap>ul>li>a{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+            }
+            
 header, footer{
     background-color: white;
 }

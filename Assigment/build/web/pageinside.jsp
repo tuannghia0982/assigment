@@ -3,7 +3,9 @@
     Created on : Mar 8, 2022, 4:07:21 PM
     Author     : tuann
 --%>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,65 +22,75 @@
         <header>
             <div class="grid">
                 <div class="heading-bar">
-                    <a href="#"><h1 style="color: blueviolet; font-size: 30px;">TruyenTranh<span style="color: #F18121;">88</span></h1></a>
-                    <form action="search" method="POST" class="search-box">
-                        <input type="text" name="txt" placeholder="Enter Searching..." style="width:100%" required>
-                        <button type="submit" class="search-icon" style="background-color: #F18121; width: 35px;"><i class="fa fa-search"></i></button>
-                    </form>
+                <a href="home"><h1 style="color: blueviolet; font-size: 30px;">TruyenTranh<span style="color: #F18121;">88</span></h1></a>
+                <form action="search" method="POST" class="search-box">
+                    <input type="text" name="txt" placeholder="Enter Searching..." style="width:100%" required>
+                    <button type="submit" class="search-icon" style="background-color: #F18121; width: 35px;"><i class="fa fa-search"></i></button>
+                </form>
+                <c:if test="${sessionScope.account!=null}">
+                    <div class="person dropdown">
+                        <div style="width: 100%; margin: 20px 0px;justify-content: center;">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </div>
+                        <div class="droplist droplist-normal" style="width: 15%; font-size: medium;">
+                            <p>${sessionScope.account.displayname}</p>
+                            <a href="info/updateinfo">Thông tin</a>
+                            <a href="favourite">Yêu thích</a>
+                            <a href="logout">Thoát   <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                        </div>  
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.account==null}">
                     <p class="login"><a href="login">Đăng Nhập</a>/<a href="signup">Đăng Ký</a></p>
-                </div>
+                </c:if>
             </div>
-                <menu>
-                    <div class="grid">
-                        <ul class="menu-ul">
-                            <li class="menu-li"><a href="#">Trang chủ</a></li>
-                                <li class="menu-li dropdown">
-                                    <a href="#">Thể loại</a>
+        </div>
+            <menu>
+                <div class="grid">
+                    <ul class="menu-ul">
+                        <li class="menu-li"><a href="home">Trang chủ</a></li>
+                            <li class="menu-li dropdown">
+                                <a href="#">Thể loại</a>
                                     <div class="droplist droplist-normal">
-                                        <a href="#">Lorem</a>
-                                        <a href="#">Lorem, ipsum</a>
-                                        <a href="#">Lorem</a>
-                                        <a href="#">Lorem</a>
-                                        <a href="#">Lorem, ipsum</a>
+                                        <c:forEach items="${requestScope.categories}" var="c">
+                                            <a href="category?caid=${c.id}">${c.name}</a>
+                                        </c:forEach>
                                     </div>
-                                </li>
-                                <li class="menu-li dropdown">
-                                    <a href="#">Quốc gia</a>
-                                    <div class="droplist droplist-normal">
-                                        <a href="#">Lorem</a>
-                                        <a href="#">Lorem, ipsum</a>
-                                        <a href="#">Lorem</a>
-                                        <a href="#">Lorem</a>
-                                        <a href="#">Lorem, ipsum</a>
-                                    </div>
-                                </li>
-                                <li class="menu-li dropdown">
-                                    <a href="#">Xem Nhiều Nhất</a>
-                                </li>
-                            <li class="menu-li"><a href="#">Group</a></li>
-                        </ul>
-                        <ul class="menu-ul-mb">
-                            <li><i class="fa-solid fa-bars"></i></li>
-                        </ul>
 
-                </div>
-                </menu>
-        </header>
+                            </li>
+                            <li class="menu-li dropdown">
+                                <a href="#">Quốc gia</a>
+                                    <div class="droplist droplist-normal">
+                                        <c:forEach items="${requestScope.countries}" var="c">
+                                            <a href="category?caid=${-1}&coid=${c.id}">${c.name}</a>
+                                        </c:forEach>
+                                    </div>
+                            </li>
+                            <li class="menu-li dropdown">
+                                <a href="#">Xem Nhiều Nhất</a>
+                            </li>
+                        <li class="menu-li"><a href="#">Group</a></li>
+                    </ul>
+                    <ul class="menu-ul-mb">
+                        <li class="menu-li-mb"><i class="fa-solid fa-bars"></i></li>
+                    </ul>
+            </div>
+            </menu>
+        
+    </header>
 
         <div class="container">
             <div class="intro" style="background-color: white; ">
-                <h2 style="display: flex; justify-content: center;  padding: 20px 0; margin: 0 0; font-size: 30px;">Truyện Ô Long Viện</h2>
-                <p style="display: flex; justify-content: center; margin: 0 0;">Tập 1</p>
+                <h2 style="display: flex; justify-content: center;  padding: 20px 0; margin: 0 0; font-size: 30px;">${requestScope.serie.name}</h2>
+                <p style="display: flex; justify-content: center; margin: 0 0;">${requestScope.chapter.name}</p>
                 <div class="controller">
                     <div class="icon">
                         <a href=""><i class='fas fa-arrow-alt-circle-left' style='font-size:36px'></i></a>
                     </div>
                     <select name="" id="">
-                        <option value="">chapter</option>
-                        <option value="">chapter</option>
-                        <option value="">chapter</option>
-                        <option value="">chapter</option>
-                        <option value="">chapter</option>
+                        <c:forEach items="${requestScope.chapters}" var="c">
+                            <option value="">${c.name}</option>
+                        </c:forEach>
                     </select>
                     <div class="icon">
                         <a href=""><i class="fas fa-arrow-alt-circle-right" style="font-size:36px"></i></a>
@@ -89,11 +101,9 @@
             <div class="grid" >
                 <div class="grid_row">
                     <div class="grid_column-12">
-                        <img src="img/olongvien.jpg" alt="" style="width: 100%;">
-                        <img src="img/olongvien.jpg" alt="" style="width: 100%;">
-                        <img src="img/olongvien.jpg" alt="" style="width: 100%;">
-                        <img src="img/olongvien.jpg" alt="" style="width: 100%;">
-                        <img src="img/olongvien.jpg" alt="" style="width: 100%;">
+                        <c:forEach items="${requestScope.images}" var="c">
+                            <img src="img/${c.info}" style="width:100%;">
+                        </c:forEach>
                     </div>
                 </div>
             </div>

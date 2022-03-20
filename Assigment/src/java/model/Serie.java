@@ -18,9 +18,19 @@ public class Serie {
     private Category category;
     private Country country;
     private String description;
-    private int quantity;
     private String author;
     private ArrayList<Chapter> chapters;
+    private int quantity;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    
 
     public ArrayList<Chapter> getChapters() {
         return chapters;
@@ -62,14 +72,6 @@ public class Serie {
         this.description = description;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -96,8 +98,12 @@ public class Serie {
 
     @Override
     public String toString() {
-        return "Serie{" + "id=" + id + ", name=" + name + ", image=" + image + ", category=" + category + ", country=" + country + ", description=" + description + ", quantity=" + quantity + ", author=" + author + ", chapters=" + chapters + '}';
+        return "Serie{" + "id=" + id + ", name=" + name + ", image=" + image + ", category=" + category + ", country=" + country + ", description=" + description + ", author=" + author + ", chapters=" + chapters + ", quantity=" + quantity + '}';
     }
+
+    
+
+    
 
     
     

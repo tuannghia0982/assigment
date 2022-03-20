@@ -45,17 +45,17 @@ public class changepasswordController extends HttpServlet {
         String repass = request.getParameter("renewpass");
         String woldpass = "Mật khẩu không chính xác";
         String wnewpass = "Mật khẩu không khớp";
-        String confirm = "Mật khẩu chính xác";
+        String confirm = "Cật nhật thành công";
         Account a = (Account)request.getSession().getAttribute("account");
         request.setAttribute(confirm, "confirm");
         if (!oldpass.equals(a.getPassword())){
-            request.setAttribute(woldpass, "warning");
+            request.setAttribute("warning", woldpass);
         }
         else if(!pass.equals(repass)){
-            request.setAttribute(wnewpass, "warning");
+            request.setAttribute("warning", wnewpass);
         }
         else{
-            request.setAttribute(confirm, "confirm");
+            request.setAttribute("confirm", confirm);
             a.setPassword(pass);
             AccountDBContext db = new AccountDBContext();
             db.updateAccount(a);
